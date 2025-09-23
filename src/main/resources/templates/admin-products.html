@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Products | FreshCart</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+
+    <h2>Manage Products</h2>
+    <a href="/admin/products/add" class="btn btn-primary">+ Add Product</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price (₹)</th>
+                <th>Stock</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${products}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.name}"></td>
+            <td th:text="${p.price}"></td>
+            <td th:text="${p.stock}"></td>
+            <td>
+                <img th:src="${p.imageUrl}" alt="No Image" width="60" height="60"/>
+            </td>
+            <td>
+                <a th:href="@{'/admin/products/edit/' + ${p.id}}" class="btn btn-outline">Edit</a>
+                <a th:href="@{'/admin/products/delete/' + ${p.id}}" class="btn btn-outline" 
+                   onclick="return confirm('Delete this product?')">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

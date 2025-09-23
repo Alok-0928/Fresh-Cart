@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Product | FreshCart</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+
+    <h2>Edit Product</h2>
+
+    <form th:action="@{'/admin/products/edit/' + ${product.id}}" method="post" enctype="multipart/form-data" class="form">
+
+        <input type="hidden" name="id" th:value="${product.id}"/>
+
+        <label>Name</label>
+        <input type="text" name="name" th:value="${product.name}" required/>
+
+        <label>Description</label>
+        <textarea name="description" th:text="${product.description}"></textarea>
+
+        <label>Price</label>
+        <input type="number" name="price" step="0.01" th:value="${product.price}" required/>
+
+        <label>Stock</label>
+        <input type="number" name="stock" th:value="${product.stock}" required/>
+
+        <label>Current Image</label><br>
+        <img th:if="${product.imageUrl != null}" th:src="${product.imageUrl}" alt="Product Image" width="100" height="100"/>
+        <br><br>
+
+        <label>Change Image</label>
+        <input type="file" name="imageFile"/>
+
+        <button type="submit" class="btn btn-primary">Update Product</button>
+    </form>
+
+</div>
+</body>
+</html>

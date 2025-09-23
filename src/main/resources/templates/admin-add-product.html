@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product | FreshCart</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+
+    <h2>Add New Product</h2>
+
+    <form th:action="@{/admin/products/add}" method="post" enctype="multipart/form-data" class="form">
+
+        <label>Name</label>
+        <input type="text" name="name" required/>
+
+        <label>Description</label>
+        <textarea name="description"></textarea>
+
+        <label>Price</label>
+        <input type="number" name="price" step="0.01" required/>
+
+        <label>Stock</label>
+        <input type="number" name="stock" required/>
+
+        <label>Product Image</label>
+        <input type="file" name="imageFile"/>
+
+        <button type="submit" class="btn btn-primary">Save Product</button>
+    </form>
+
+</div>
+</body>
+</html>
